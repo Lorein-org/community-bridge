@@ -1,0 +1,22 @@
+version: '3'
+
+vars:
+  LOREIN_INTERNAL: ".lorein"
+
+includes:
+  env:
+    taskfile: .tasks/env.task.yaml
+    vars:
+      LOREIN_INTERNAL: "{{.LOREIN_INTERNAL}}"
+    optional: false
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  init:
+    desc: "Intelligently enforces infrastructure routing and state synchronization"
+    cmds:
+      - mkdir -p {{.LOREIN_INTERNAL}}
+      - task: env:init-env
