@@ -1,0 +1,14 @@
+# ==============================================================================
+# LOREIN INFRASTRUCTURE - GLOBAL FALLBACK CONFIGURATION
+# ==============================================================================
+
+[core]
+    # Enforces POSIX-compliant line breaks (LF) on commit for absolute platform portability
+    autocrlf = input
+    
+    # Restricts file execution access rights to system groups (ISO 27001 baseline)
+    sharedRepository = group
+
+[pull]
+    # Hard-enforces Fast-Forward only merges to protect timeline history from merge noise
+    ff = only
