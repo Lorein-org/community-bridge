@@ -19,3 +19,9 @@ If local Git definitions become corrupted due to manual adjustments or overlappi
 
 1. Delete the compiled root switcher configuration file `../.gitconfig`.
 2. Run `task init` inside the `community-bridge` directory to flush old states and force re-compile the standardized environmental matrix.
+
+## USER DOCUMENTATION MAPPING
+
+The operational user guide derived from this technical infrastructure execution is officially versioned and maintained outside the project incubation scope.
+For step-by-step developer onboarding configurations, lookup parameters, and corporate identity overrides, refer directly to the user-facing instruction set:
+[Lorein Local Git Configuration Guide](../../onboarding/01-local-git-configuration.md)
