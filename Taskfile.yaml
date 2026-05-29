@@ -9,6 +9,9 @@ includes:
     vars:
       LOREIN_INTERNAL: "{{.LOREIN_INTERNAL}}"
     optional: false
+  vcs:
+    taskfile: .tasks/vcs.task.yaml
+    optional: false
 
 tasks:
   default:
@@ -20,3 +23,16 @@ tasks:
     cmds:
       - mkdir -p {{.LOREIN_INTERNAL}}
       - task: env:init-env
+
+  realign:
+    desc: "Fixes broken submodule paths and VCS name changes without deleting local folders"
+    cmds:
+      - task: env:realign-submodules
+
+  repair-templates:
+    desc: "Automates non-destructive repair for the templates submodule layer"
+    cmds:
+      - task: vcs:repair-submodule
+        vars:
+          SUBMODULE_PATH: {{.SUBMODULE_PATH}}
+          SUBMODULE_URL: {{.SUBMODULE_URL}}

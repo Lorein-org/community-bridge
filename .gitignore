@@ -1,0 +1,25 @@
+.gitconfig.pub
+
+# Fichiers temporaires du système local
+Thumbs.db
+.DS_Store
+
+# IDEs et éditeurs de texte
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Fichiers d'environnement et logs locaux
+*.log
+.env
+.env.local
+
+# Empêcher le suivi des builds ou fichiers temporaires de documentation
+dist/
+build/
+out/
+*.tmp

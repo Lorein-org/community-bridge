@@ -1,0 +1,24 @@
+# ====================================================================
+# LOREIN COOPERATIVE IDENTITY ROUTER - PUBLIC WORKER CONFIGURATION
+# ====================================================================
+
+[user]
+	# Your public name or pseudonym displayed in the Git history
+	name = Your Name Or Pseudonym
+	
+	# Your professional or GitHub-associated email address
+	email = your.email@example.com
+	
+	# Cryptographic GPG key ID (Optional for community onboarding v1)
+	# signingkey = 
+
+[core]
+	# Converts Windows CRLF to Linux LF on commit, keeps LF locally
+	autocrlf = input
+	
+	# Hard-blocks any irreversible end-of-line line conversions
+	safecrlf = true
+
+[commit]
+	# Disables mandatory GPG signing to allow instant community work
+	gpgsign = false

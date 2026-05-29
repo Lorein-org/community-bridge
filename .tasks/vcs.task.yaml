@@ -1,0 +1,41 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+
+  repair-submodule:
+    desc: "Safely backups, purges, and re-initializes a corrupted submodule link"
+    summary: |
+      Requires variables:
+        - SUBMODULE_PATH: Relative path from parent root (e.g., submodules/gov-work-templates)
+        - SUBMODULE_URL: Remote Git repository address
+    cmds:
+      - echo "[INFO] Initializing safe migration protocol for {{.SUBMODULE_PATH}}..."
+      
+      # Step 1: Secure local files into an isolated sandbox under the root matrix context
+      - mkdir -p "../_Lorein_Backup_Workspace"
+      - |
+        if [ -d "{{.SUBMODULE_PATH}}" ]; then
+          echo "[INFO] Backing up untracked local assets..."
+          cp -r {{.SUBMODULE_PATH}}/* "../_Lorein_Backup_Workspace/" 2>/dev/null || true
+        fi
+
+      # Step 2: Evict corrupted tracking references from Git cache layers
+      - git rm --cached -r {{.SUBMODULE_PATH}} -f || true
+      - rm -rf .git/modules/{{.SUBMODULE_PATH}}
+      - rm -rf {{.SUBMODULE_PATH}}
+
+      # Step 3: Establish the formal cryptographic SHA-1 pointer hash link
+      - git submodule add --force {{.SUBMODULE_URL}} {{.SUBMODULE_PATH}}
+
+      # Step 4: Restore user assets into the healthy child context repository space
+      - |
+        if [ -d "../_Lorein_Backup_Workspace" ]; then
+          echo "[INFO] Restoring local assets into the newly mapped submodule..."
+          cp -r ../_Lorein_Backup_Workspace/* {{.SUBMODULE_PATH}}/ 2>/dev/null || true
+          rm -rf "../_Lorein_Backup_Workspace"
+        fi
+      - echo "[SUCCESS] {{.SUBMODULE_PATH}} successfully aligned and restored."

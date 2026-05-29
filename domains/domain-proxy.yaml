@@ -1,0 +1,7 @@
+version: "1.2.0-prototype"
+domain-alias: "gov.legislation.atomic"
+vcs-target-org: "lorein-gov"
+vcs-target-repo: "gov-core-legislation"
+routing-path: "submodules/blueprints/submodules/gov-core-legislation"
+criticality-level: "CRITICAL"
+operational-status: "ACTIVE"
