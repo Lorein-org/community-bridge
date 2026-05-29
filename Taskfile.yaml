@@ -29,10 +29,23 @@ tasks:
     cmds:
       - task: env:realign-submodules
 
-  repair-templates:
-    desc: "Automates non-destructive repair for the templates submodule layer"
+  repair:
+    desc: "Automates non-destructive repair for any targeted submodule layer"
+    summary: |
+      Usage:
+        task repair SUBMODULE_PATH="<path>" SUBMODULE_URL="<url>"
     cmds:
       - task: vcs:repair-submodule
         vars:
-          SUBMODULE_PATH: {{.SUBMODULE_PATH}}
-          SUBMODULE_URL: {{.SUBMODULE_URL}}
+          SUBMODULE_PATH: "{{.SUBMODULE_PATH}}"
+          SUBMODULE_URL: "{{.SUBMODULE_URL}}"
+
+  env:init:
+    desc: "[L-TDD] Initialise proprement la sandbox centrale et configure le routage d'identité modulaire"
+    cmds:
+      - powershell -ExecutionPolicy Bypass -File ./.tasks/bootstrap-env.ps1
+
+  test:env:
+    desc: "[L-TDD] Exécute l'analyse d'assertion de notre routeur d'environnement modulaire"
+    cmds:
+      - powershell -ExecutionPolicy Bypass -File ./tests/test-env-routing.ps1

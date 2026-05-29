@@ -1,6 +1,6 @@
 [submodule ".github"]
 	path = .github
-	url = https://github.com/Lorein-org/.github.git
+	url = https://github.com/Lorein-org/github.git
 
 [submodule "submodules/gov-work-registry"]
 	path = submodules/gov-work-registry
