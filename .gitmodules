@@ -1,0 +1,11 @@
+[submodule ".github"]
+	path = .github
+	url = https://github.com/Lorein-org/.github.git
+
+[submodule "submodules/gov-work-registry"]
+	path = submodules/gov-work-registry
+	url = https://github.com/Lorein-org/gov-work-registry.git
+
+[submodule "submodules/gov-work-templates"]
+	path = submodules/gov-work-templates
+	url = https://github.com/Lorein-org/gov-work-templates.git
